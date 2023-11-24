@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Server Room ERP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        rel="stylesheet">
+    <script src="/js/facultyheader.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        h5 {
+            font-weight: 800 !important;
+            word-spacing: 4px !important;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif !important;
+            background-color: #4d44b4 !important;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 550 !important;
+        }
+
+        a {
+            background-color: #4d44b5 !important;
+        }
+
+        .btn {
+            margin-top: 20px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Home Page Card Starting -->
+    <div class="container text-center">
+        <div class="row mt-4">
+            <div class="col-6 col-md-4 ">
+                <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <h5 class="card-title">Mark Attendance</h5>
+                        <p class="card-text">Mark Student Attendance</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#markModal1">Mark</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Other cards here -->
+            <div class="col-6 col-md-4 ">
+                <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Student</h5>
+                        <p class="card-text">Manage All Students</p>
+                        <a href="/faculty/managestudent" class="btn btn-primary">Manage</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 ">
+                <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <h5 class="card-title">Show Attendance</h5>
+                        <p class="card-text">Show Student Attendance</p>
+                        <a href="#" class="btn btn-primary">Show</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 ">
+                <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <h5 class="card-title">Edit Attendance</h5>
+                        <p class="card-text">Edit Student Attendance</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#markModal2">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Home Page Card Ending -->
+
+    <!-- Mark Attendance Modal 1 -->
+    <div class="modal fade" id="markModal1" tabindex="-1" aria-labelledby="markModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/faculty/markattendance" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="markModalLabel1">Mark Attendance</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" id="datepicker1" class="form-control" placeholder="Select a date" name="date">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Attendance Modal 2 -->
+    <div class="modal fade" id="markModal2" tabindex="-1" aria-labelledby="markModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="markModalLabel2">Edit Attendance</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" id="datepicker2" class="form-control" placeholder="Select a date">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Show Attendance Modal 2 -->
+    <div class="modal fade" id="markModal3" tabindex="-1" aria-labelledby="markModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="markModalLabel3">Show Attendance</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" id="datepicker3" class="form-control" placeholder="Select a date">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+   <script>
+    $(document).ready(function () {
+        $('#datepicker1').datepicker({
+            format: 'yyyy-mm-dd',
+            todayBtn: 'linked',
+            clearBtn: true,
+            autoclose: true,
+            endDate: new Date() 
+        });
+
+        $('#datepicker2').datepicker({
+            format: 'yyyy-mm-dd',
+            todayBtn: 'linked',
+            clearBtn: true,
+            autoclose: true,
+            endDate: new Date() 
+        });
+
+        $('#datepicker3').datepicker({
+            format: 'yyyy-mm-dd',
+            todayBtn: 'linked',
+            clearBtn: true,
+            autoclose: true,
+            endDate: new Date() 
+        });
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Student Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Material Icons -->
+
+    <script src="/js/header.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        h1 {
+            font-weight: 800 !important;
+            word-spacing: 4px !important;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif !important;
+            background-color: #4d44b4 !important;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 550 !important;
+        }
+
+        a {
+            background-color: #4d44b5 !important;
+        }
+
+        h2 {
+            color: #4d44b5 !important;
+        }
+
+        .col-md-12 a {
+            background-color: white !important;
+        }
+
+        #goBackButton {
+            background-color: white !important;
+            border-radius: 0px !important;
+        }
+
+        button {
+            color: rgba(255, 255, 255, 0.267) !important;
+            border: none;
+            background: none;
+            outline: none;
+        }
+
+        #goBackButton {
+            background-color: rgb(255, 255, 255) !important;
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="mt-4 mb-4">
+                    <!-- <a href="./search_student_details.html"><i class="material-icons">arrow_back</i></a> -->
+                    <button id="goBackButton"><i class="material-icons">arrow_back</i></button>
+                    Edit Student Details
+                </h1>
+            </div>
+        </div>
+        <form action="/admin/updatesubject" method="POST">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">ID</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                    value="<%= d._id %>" readonly name="id">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Subject Code</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                    value="<%= d.code %>" name="code">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                    value="<%= d.name %>" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="semester" class="form-label">Semester</label>
+                                <select class="form-select" id="semester" name="semester">
+                                    <option value="1" <%=d.semester===1 ? 'selected' : '' %>>1</option>
+                                    <option value="2" <%=d.semester===2 ? 'selected' : '' %>>2</option>
+                                    <option value="3" <%=d.semester===3 ? 'selected' : '' %>>3</option>
+                                    <option value="4" <%=d.semester===4 ? 'selected' : '' %>>4</option>
+                                    <option value="5" <%=d.semester===5 ? 'selected' : '' %>>5</option>
+                                    <option value="6" <%=d.semester===6 ? 'selected' : '' %>>6</option>
+                                    <option value="7" <%=d.semester===7 ? 'selected' : '' %>>7</option>
+                                    <option value="8" <%=d.semester===8 ? 'selected' : '' %>>8</option>
+                                </select>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary"
+                                    style="color: white !important;">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        const backButton = document.getElementById("goBackButton");
+        backButton.addEventListener("click", goBack);
+    </script>
+</body>
+
+</html>

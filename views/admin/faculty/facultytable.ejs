@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Material Icons -->
+
+    <script src="/js/header.js" defer></script>
+
+    <link rel="stylesheet" href="/css/table_style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+        .container {
+            margin-left: 15px !important;
+            margin-right: 15px !important;
+        }
+
+        .table-responsive {
+            width: 95vw !important;
+        }
+
+        h2 {
+            color: #0c0c0c !important;
+        }
+
+        .col-md-12 a {
+            background-color: white !important;
+        }
+
+        a {
+            color: #0c0c0c !important;
+            text-decoration: none;
+        }
+
+        i {
+            cursor: pointer;
+            color: #4d44b5 !important;
+        }
+
+        #goBackButton {
+            background-color: azure !important;
+            border-radius: 0px !important;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <h2><button id="goBackButton"><i class="material-icons">arrow_back</i></button>Faculty Information</h2>
+        <div class="table-responsive">
+            <table class="table table-light table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">TG ID</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Qualification</th>
+                        <th scope="col">DOB</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Data.forEach(Faculty=> { %>
+
+                        <tr>
+
+                            <td>
+                                <%=Faculty.name %>
+                            </td>
+                            <td>
+                                <!-- <a href="mailto:<%=Faculty.email %>"> -->
+                                <%=Faculty.email %>
+                                    <!-- </a> -->
+                            </td>
+                            <td>
+                                <%=Faculty.mobile %>
+                            </td>
+                            <td>
+                                <%= Faculty.tgid ? Faculty.tgid : "NA" %>
+
+                            </td>
+                            <td>
+                                <%=Faculty.gender %>
+                            </td>
+                            <td>
+                                <%=Faculty.designation %>
+                            </td>
+                            <td>
+                                <%=Faculty.branch %>
+                            </td>
+                            <td>
+                                <%=Faculty.qualifications %>
+                            </td>
+                            <td>
+                                <%=Faculty.dob %>
+                            </td>
+
+                        </tr>
+                        <%}); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+
+        // Add click event listener to the button
+        const backButton = document.getElementById("goBackButton");
+        backButton.addEventListener("click", goBack);
+    </script>
+</body>
+
+</html>

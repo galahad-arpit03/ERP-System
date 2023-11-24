@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Login SR-4</title>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h2>SISTec ERP Login</h2>
+        <h2>Faculty Login</h2>
+        <h3>Enter your credentials</h3>
+        <% if (errorMessage) { %>
+            <p class="error">
+                <%= errorMessage %>
+            </p>
+            <% } %>
+
+                <form class="login-form" method="post" action="/auth/faculty/login">
+                    <input type="email" placeholder="Username" name="username" required>
+                    <div class="password-container">
+                        <input type="password" placeholder="Password" name="password" id="password" required>
+                        <i class="material-icons" id="togglePassword">visibility</i>
+                    </div>
+                    <a href="/auth/forgotPassword">Forgot your password?</a>
+                    <button type="submit">LOGIN</button>
+                </form>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+        const togglePasswordIcon = document.getElementById("togglePassword");
+
+        togglePasswordIcon.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePasswordIcon.textContent = "visibility_off";
+            } else {
+                passwordInput.type = "password";
+                togglePasswordIcon.textContent = "visibility";
+            }
+        });
+    </script>
+</body>
+
+</html>

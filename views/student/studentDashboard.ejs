@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Material Icons -->
+    <script src="/js/studentHeader.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        h5 {
+            font-weight: 800 !important;
+            word-spacing: 4px !important;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif !important;
+            background-color: #4d44b4 !important;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 550 !important;
+        }
+
+        a {
+            background-color: #4d44b5 !important;
+        }
+
+        .btn {
+            margin-top: 20px !important;
+        }
+
+        .card-body {
+            display: flex;
+            justify-content: left;
+            align-items: flex-start;
+            height: 100%;
+        }
+
+        #myChart {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .new-card {
+            max-width: 100%;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <canvas class="my-4 " id="myChart"></canvas>
+                <input type="hidden" id="classAttended" value="<%= data.classattended %>">
+                <input type="hidden" id="totalClass" value="<%= data.totalclass %>">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <div class="new-card">
+                        <h2>Attendance Summary</h2>
+                        <p>Attendance Percentage: <span id="attendancePercentage">
+                                <%= (data.classattended / data.totalclass * 100).toFixed(2) %>
+                            </span>%</p>
+                        <p>Total Working Days: <span id="totalWorkingDays">
+                                <%= data.totalclass %>
+                            </span></p>
+                        <p>Total Present: <span id="totalPresent">
+                                <%= data.classattended %>
+                            </span></p>
+                        <p>Total Absent: <span id="totalAbsent">
+                                <%= data.totalclass-data.classattended %>
+                            </span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <h1>Student Attendance</h1>
+            <div class="card">
+                <div class="card-header">
+                    Date Wise Attendance
+                </div>
+                <div class="card-body" style="max-height: 400px; overflow-y: auto;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">DATE</th>
+                                <th scope="col">ATTENDANCE STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">10-02-2023</th>
+                                <td><i class="material-icons" style="color: red;">close</i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var ctx = document.getElementById("myChart");
+        var classAttended = parseInt(document.getElementById("classAttended").value);
+        var totalClass = parseInt(document.getElementById("totalClass").value);
+
+        var myChart = new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                labels: ["Present", "Absent"],
+                datasets: [{
+                    data: [classAttended, totalClass - classAttended],
+                    backgroundColor: ["#4d44b5", "#fff"],
+                    borderColor: "#007bff",
+                    borderWidth: 4,
+                    pointBackgroundColor: "#007bff",
+                }],
+            },
+            options: {
+                cutoutPercentage: 70,
+                legend: {
+                    display: true,
+                },
+            },
+        });
+    </script>
+
+
+    <!-- <script>
+        const attendanceData = [
+            { date: "10-02-2023", status: "absent" },
+            // Add more data here
+        ];
+
+        // Function to calculate totals and update the HTML elements
+        function calculateAttendanceTotals() {
+            const totalWorkingDays = attendanceData.length;
+            const totalPresent = attendanceData.filter(entry => entry.status === "present").length;
+            const totalAbsent = attendanceData.filter(entry => entry.status === "absent").length;
+
+            document.getElementById("totalWorkingDays").textContent = totalWorkingDays;
+            document.getElementById("totalPresent").textContent = totalPresent;
+            document.getElementById("totalAbsent").textContent = totalAbsent;
+        }
+
+        calculateAttendanceTotals(); -->
+    </script>
+</body>
+
+</html>

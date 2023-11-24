@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editable Faculty Details</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Material Icons -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="/js/header.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        h1 {
+            font-weight: 800 !important;
+            word-spacing: 4px !important;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif !important;
+            background-color: #4d44b4 !important;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 550 !important;
+        }
+
+        a {
+            background-color: #4d44b5 !important;
+        }
+
+        h2 {
+            color: #4d44b5 !important;
+        }
+
+        .col-md-12 a {
+            background-color: white !important;
+        }
+
+        i {
+            cursor: pointer;
+            color: #4d44b5 !important;
+        }
+
+        #goBackButton {
+            background-color: azure !important;
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container mb-3">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="mt-4 mb-4"> <button id="goBackButton"><i class="material-icons">arrow_back</i></button>
+                    Edit Faculty Details</h1>
+            </div>
+            <form action="/admin/updatefaculty" method="post">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body ">
+
+                                <div class=" mb-3">
+                                    <label for="name" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="id" value="<%=d._id
+                                        %>" name="id" readonly>
+                                </div>
+                                <div class=" mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" value="<%=d.name
+                                        %>" name="name">
+                                </div>
+                                <div class=" mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" value="<%=d.email
+                                        %>" name="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tgid" class="form-label">TG ID</label>
+                                    <input type="text" class="form-control" id="tgid"
+                                        value="<%= d.tgid ? d.tgid : "NA" %>" name="tgid">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Mobile</label>
+                                    <input type="phone" class="form-control" id="phone" value="<%=d.mobile
+                                        %>" name="mobile">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="DOB" class="form-label">DOB</label>
+                                    <input type="date" class="form-control" id="DOB" value="<%=d.dob
+                                                                            %>" name="dob">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="editGender" class="form-label">Gender</label>
+
+                                    <select class="form-select" id="editGender" name="gender">
+                                        <option value="Male" <% if (d.gender==='Male' ) { %>selected<% } %>>Male
+                                        </option>
+                                        <option value="Female" <% if (d.gender==='Female' ) { %>selected<% } %>
+                                                >Female
+                                        </option>
+                                    </select>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDesignation" class="form-label">Designation</label>
+                                    <select class="form-select" id="editDesignation" name="designation">
+                                        <option value="Professor" <% if (d.designation==='Professor' ) { %>selected
+                                            <% } %>
+                                                >Professor
+                                        </option>
+                                        <option value="Assistant Professor" <% if (d.designation==='Assistant Professor'
+                                            ) { %>
+                                            selected<% } %>>Assistant Professor
+                                        </option>
+                                        <option value="Head of Department" <% if (d.designation==='Head of Department' )
+                                            { %>
+                                            selected<% } %>>Head
+                                                of Department</option>
+                                    </select>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDesignation" class="form-label">Designation</label>
+                                    <select class="form-select" id="course" required name="branch">
+                                        <option value="" disabled>Select a Course</option>
+                                        <option value="Computer Science & Eng" <% if
+                                            (d.qualifications==='Computer Science & Eng' ) { %>selected<% } %>
+                                                >Computer Science and Engineering</option>
+                                        <option value="Artificial Intelligence" <% if
+                                            (d.qualifications==='Artificial Intelligence' ) { %>selected<% } %>
+                                                >AI&DS
+                                        </option>
+                                        <option value="Cybersecurity" <% if (d.qualifications==='Cybersecurity' ) { %>
+                                            selected<% } %> >Cyber Security
+                                        </option>
+                                    </select>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="qualification" class="form-label">Qualification</label>
+                                    <select class="form-select" id="qualification" name="qualification">
+                                        <option value="B.Tech" <%=d.dualifications==="B.Tech" ? "selected" : "" %>
+                                            >B.Tech</option>
+                                        <option value="M.Tech" <%=d.dualifications==="M.Tech" ? "selected" : "" %>
+                                            >M.Tech</option>
+                                        <option value="PHD" <%=d.dualifications==="PHD" ? "selected" : "" %>>PHD
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+
+        // Add click event listener to the button
+        const backButton = document.getElementById("goBackButton");
+        backButton.addEventListener("click", goBack);
+    </script>
+</body>
+
+</html>

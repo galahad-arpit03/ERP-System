@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Student Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Material Icons -->
+
+    <script src="/js/header.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        h1 {
+            font-weight: 800 !important;
+            word-spacing: 4px !important;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif !important;
+            background-color: #4d44b4 !important;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 550 !important;
+        }
+
+        a {
+            background-color: #4d44b5 !important;
+        }
+
+        h2 {
+            color: #4d44b5 !important;
+        }
+
+        .col-md-12 a {
+            background-color: white !important;
+        }
+
+        #goBackButton {
+            background-color: white !important;
+            border-radius: 0px !important;
+        }
+
+        button {
+            color: rgba(255, 255, 255, 0.267) !important;
+            border: none;
+            background: none;
+            outline: none;
+        }
+
+        #goBackButton {
+            background-color: rgb(255, 255, 255) !important;
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mt-4 mb-4">
+                        <!-- <a href="./search_student_details.html"><i class="material-icons">arrow_back</i></a> -->
+                        <button id="goBackButton"><i class="material-icons">arrow_back</i></button>
+                        Edit Student Details
+                    </h1>
+                </div>
+            </div>
+            <form action="/admin/updatestudent" method="POST">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">ID</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        value="<%= d._id %>" readonly name="id">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Enrollment Number</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        value="<%= d.enrollment %>" readonly name="enrollment">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" value="<%= d.name %>" name="name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" value="<%= d.email %>"
+                                        name="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Mobile</label>
+                                    <input type="phone" class="form-control" id="phone" value="<%= d.mobile%>"
+                                        name="mobile">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editGender" class="form-label">Gender</label>
+                                    <select class="form-select" id="editGender" name="gender">
+                                        <option value="Male" <% if (d.gender==='Male' ) { %>selected<% } %>>Male
+                                        </option>
+                                        <option value="Female" <% if (d.gender==='Female' ) { %>selected<% } %>>Female
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editGuardianName" class="form-label">Guardians Name</label>
+                                    <input type="text" class="form-control" id="editGuardianName"
+                                        value="<%= d.guardianName%>" name="guardianName">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="tgid" class="form-label">TG ID</label>
+                                    <input type="text" class="form-control" id="tgid"
+                                        value="<%= d.tgid ? d.tgid : 'Not Assigned' %>" name="tgid">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editDOB" class="form-label">Date of
+                                        Birth</label>
+                                    <input type="date" class="form-control" id="editDOB" value="<%= d.dob%>" name="dob">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="editGuardianNumber" class="form-label">Guardians
+                                        Number</label>
+                                    <input type="phone" class="form-control" id="editGuardianNumber"
+                                        value="<%= d.guardianMobile%>" name="guardianMobile">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cgpa/percentage" class="form-label">CGPA/Percentage</label>
+                                    <input type="phone" class="form-control" id="cgpa/percentage" value="<%= d.cgpa %>"
+                                        name="cgpa">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="course" class="form-label">Course</label>
+                                    <select class="form-select" id="course" name="branch">
+                                        <option value="CSE" <% if (d.branch==='Computer Science and Engineering' ) { %>
+                                            selected<% } %>>Computer Science
+                                                and Engineering</option>
+                                        <option value="AI/DS" <% if (d.branch==='AI/DS' ) { %>selected<% } %>>AI/DS
+                                        </option>
+                                        <option value="Cybersecurity" <% if (d.branch==='Cybersecurity' ) { %>selected<%
+                                                } %>>Cybersecurity</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="programme" class="form-label">Programme</label>
+                                    <input type="text" class="form-control" id="programme" value="<%= d.programme %>"
+                                        name="programme">
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary"
+                                        style="color: white !important;">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <script>
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+
+        // Add click event listener to the button
+        const backButton = document.getElementById("goBackButton");
+        backButton.addEventListener("click", goBack);
+    </script>
+</body>
+
+</html>

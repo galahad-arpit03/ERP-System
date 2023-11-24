@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Define your root variables */
+:root {
+    --color-primary: #6C9BCF;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #4d44b5;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo h2 {
+    font-size: 1.8rem;
+    margin-left: 0.6rem;
+}
+
+.student-list {
+    padding: 1.6rem;
+}
+
+.student-list h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.student {
+    background-color: var(--color-white);
+    padding: 1.6rem;
+    border-radius: 2rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2rem 3rem var(--color-light);
+    display: flex;
+    align-items: center;
+}
+
+.student img {
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.student h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.student p {
+    color: var(--color-dark-variant);
+    margin: 25px;
+}
+
+
+.student-details {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.list-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.radio-buttons label {
+    margin-right: 1rem;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+
+    .student-list {
+        padding: 1rem;
+    }
+
+    .student {
+        display: block;
+        text-align: center;
+    }
+
+    .student img {
+        margin: 0 auto;
+        display: block;
+    }
+
+    .radio-buttons {
+        text-align: center;
+    }
+
+    .radio-buttons label {
+        margin-right: 0.5rem;
+    }
+}

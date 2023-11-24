@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "name": "my-express-app",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/" },
+    { "src": "/admin/managefaculty", "dest": "/admin/managefaculty" },
+    { "src": "/admin/searchfaculty", "dest": "/admin/searchfaculty" },
+    { "src": "/admin/searchstudent", "dest": "/admin/searchstudent" },
+    { "src": "/admin/searchsubject", "dest": "/admin/searchsubject" },
+    { "src": "/admin/managestudent", "dest": "/admin/managestudent" },
+    { "src": "/admin/facultytable", "dest": "/admin/facultytable" },
+    { "src": "/admin/studenttable", "dest": "/admin/studenttable" },
+    { "src": "/admin/subjecttable", "dest": "/admin/subjecttable" },
+    { "src": "/admin/managesubject", "dest": "/admin/managesubject" },
+    { "src": "/admin/gettgids", "dest": "/admin/gettgids" },
+    { "src": "/admin/addfaculty", "dest": "/admin/addfaculty" },
+    { "src": "/admin/addstudent", "dest": "/admin/addstudent" },
+    { "src": "/admin/addsubject", "dest": "/admin/addsubject" },
+    { "src": "/admin/singlefaculty", "dest": "/admin/singlefaculty" },
+    { "src": "/admin/singlestudent", "dest": "/admin/singlestudent" },
+    { "src": "/admin/facultyeditdetails", "dest": "/admin/facultyeditdetails" },
+    { "src": "/admin/updatefaculty", "dest": "/admin/updatefaculty" },
+    { "src": "/admin/updatestudent", "dest": "/admin/updatestudent" },
+    { "src": "/admin/editstudentdetails", "dest": "/admin/editstudentdetails" },
+    { "src": "/admin/editsubjectdetails", "dest": "/admin/editsubjectdetails" },
+    { "src": "/admin/singlesubject", "dest": "/admin/singlesubject" },
+    { "src": "/auth/admin/login", "dest": "/auth/admin/login" },
+    { "src": "/auth/faculty/login", "dest": "/auth/faculty/login" },
+    { "src": "/auth/student/login", "dest": "/auth/student/login" },
+    { "src": "/faculty/login", "dest": "/faculty/login" },
+    { "src": "/student/login", "dest": "/student/login" },
+    { "src": "/admin/dashboard", "dest": "/admin/dashboard" },
+    { "src": "/faculty/dashboard", "dest": "/faculty/dashboard" },
+    { "src": "/student/dashboard", "dest": "/student/dashboard" },
+    { "src": "/forgotPassword", "dest": "/forgotPassword" },
+    { "src": "/logout", "dest": "/logout" },
+    { "src": "/faculty/managestudent", "dest": "/faculty/managestudent" },
+    { "src": "/faculty/searchstudent", "dest": "/faculty/searchstudent" },
+    { "src": "/faculty/studenttable", "dest": "/faculty/studenttable" },
+    { "src": "/faculty/markattendance", "dest": "/faculty/markattendance" },
+    { "src": "/faculty/submitattendance", "dest": "/faculty/submitattendance" },
+    { "src": "/student/dashboard", "dest": "/student/dashboard" }
+  ]
+}
